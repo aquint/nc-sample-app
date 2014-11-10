@@ -1,0 +1,6 @@
+<%= form_for(@team) do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "Team Name", class: "form-control" %>
+  </div>
+  <%= f.submit "Create Team", class: "btn btn-primary" %>
+<% end %>

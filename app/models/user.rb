@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	                  uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, length: { minimum: 8 }
+	has_many :memberships
+	has_many :teams, through: :memberships
 
 	def User.new_token
       SecureRandom.urlsafe_base64
@@ -32,4 +34,15 @@ class User < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def join_team(team)
+  	memberships.create(team_id: team.id)
+  end
+  def leave_team(user)
+  	memberships.find_by(user_id: user.id).destroy
+  end
+
+  def in_team?(user)
+	  teams.include?(user)
+	end
 end

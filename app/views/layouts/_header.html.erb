@@ -1,0 +1,30 @@
+<div class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Narrowcontent Sample App</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a class="nav-items" href="/">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li>
+            <%= link_to "View all teams", teams_path %>
+          </li>
+          <li>
+            <%= link_to "Profile", current_user %>
+          </li>
+          <li>
+            <%= link_to "Log out", logout_path, method: 'delete' %>
+          </li>
+        <% else %>
+          <li class="dropdown">
+            <%= link_to "Log in", login_path %>
+          </li>
+          <li>
+            <a class="nav-items" href="/signup">Sign up</a>
+          </li>
+        <% end %>
+    </ul>
+  </div>
+</div>

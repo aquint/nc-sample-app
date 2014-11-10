@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   	<h3>Sign Up and Create a Profile</h3>
-    <h4>Welcom to the Narrowcontent Sample App. Please create an account to get started.</h4>
+    <h4>Welcome to the Narrowcontent Sample App. Please create an account to get started.</h4>
     <%= form_for(@user) do |f| %>
 
       <%= f.label :email %>
@@ -20,7 +20,7 @@
       <%= f.submit "Sign up", class: "btn btn-primary" %>
 
     <% end %>
-    <p>Already have an account?</p>
+    <p>Already have an account? <%= link_to "Log In", login_path %></p>
   </div>
 </div>
 </div>

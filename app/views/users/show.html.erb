@@ -1,9 +1,38 @@
-<div class="container">
-	<div class="row show-post">
+<div class="container profile">
+	<div class="row">
 		<div class="col-md-12">
-			<h1><%= @user.name %></h1>
-			<h2><%= @user.email %></h2>
-			<%= link_to "Log out", logout_path, method: 'delete' %>
+			<h1><%= @user.name %></h1>	
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Create a Team</h3>
+			<%= render 'teams/new_team' %>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-6">
+		    <h3><%= @title %></h3>
+		    <% if @teams.any? %>
+		      <ul class="users">
+		        <% @teams.each do |team| %>
+		        <li><%= link_to team.name, team %></li>
+		        <% end %>
+		      </ul>
+		    <% end %>
+		</div>
+		<div class="col-md-6">
+		    <h3><%= 'My Tasks' %></h3>
+		    <% if true %>
+		      <ul class="users">
+		        <li><a href="#">Task 1</a></li>
+		        <li><a href="#">Task 2</a></li>
+		        <li><a href="#">Task 3</a></li>
+		        <li><a href="#">Task 4</a></li>
+		      </ul>
+		    <% end %>
 		</div>
 	</div>
 </div>

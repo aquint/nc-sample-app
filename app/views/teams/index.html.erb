@@ -1,0 +1,14 @@
+<div class="container all-teams">
+	<h1>All Teams</h1>
+	<%= will_paginate %>
+	<ul class="posts">
+	  <% @teams.reverse_each do |team| %>
+	    <li>
+	      <p><%= l team.created_at, format: :short %></p>
+	      <%= link_to team.name, team %>
+	      <%= render 'users/join_form', team: team %>
+	    </li>
+	  <% end %>
+	</ul>
+	<%= will_paginate %>
+</div>

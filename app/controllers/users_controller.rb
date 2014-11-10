@@ -15,10 +15,26 @@ class UsersController < ApplicationController
 	end
 	def show
 		@user = User.find(params[:id])
+		@team = Team.new
+		@title = "My Teams"
+		@user  = User.find(params[:id])
+		@teams = @user.teams
+	end
+
+	def teams
+		@title = "My Teams"
+		@user  = User.find(params[:id])
+		@teams = @user.teams
+    	render 'show_teams'
 	end
 
 	private
 		def user_params
 			params.require(:user).permit(:email, :name, :password, :password_confirmation)
 		end
+
+		def correct_user
+	      @user = User.find(params[:id])
+	      redirect_to(root_url) unless current_user?(@user)
+	    end
 end

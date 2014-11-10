@@ -1,0 +1,10 @@
+<div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @teams.any? %>
+      <ul class="users">
+        <% @teams.each do |team| %>
+        <li><%= team.name %></li>
+        <% end %>
+      </ul>
+    <% end %>
+</div>

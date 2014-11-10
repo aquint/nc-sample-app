@@ -1,9 +1,21 @@
 NarrowcontentApp::Application.routes.draw do
+  get "teams/new"
   root 'users#new'
+  get 'signup' => "users#new"
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :users
+  resources :users do
+    member do
+      get :teams
+    end
+  end
+  resources :teams do
+     member do
+      get :members
+    end
+  end
+  resources :memberships,       only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
