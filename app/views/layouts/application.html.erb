@@ -8,6 +8,9 @@
 </head>
 <body>
 	<%= render 'layouts/header' %>
+	<% flash.each do |message_type, message| %>
+		<div class="alert alert-<%= message_type %>"><%= message %></div>
+	<% end %>
 	<%= yield %>
 	<hr>
 	<%= javascript_include_tag "scripts", "data-turbolinks-track" => true %>

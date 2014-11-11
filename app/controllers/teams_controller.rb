@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
       flash[:success] = "Team Created!"
       redirect_to @team
     else
-      flash[:error] = "Team already exists"
+      flash[:danger] = "Team already exists"
       redirect_to interface_show_path
     end
   end
