@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	has_many :teams, through: :memberships
   has_many :tasks
   has_many :items, through: :tasks
+  has_many :task_lists, dependent: :destroy
 
 	def User.new_token
       SecureRandom.urlsafe_base64

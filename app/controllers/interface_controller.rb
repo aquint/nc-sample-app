@@ -1,4 +1,5 @@
 class InterfaceController < ApplicationController
+  before_action :logged_in_user
   def show
   	@team = Team.new
   	@teams = Team.all

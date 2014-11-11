@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 			params.require(:item).permit(:content)
 		end
 		def set_task_list
-			@task_list = TaskList.find(params[:task_list_id])
+			@task_list = current_user.task_list.find(params[:task_list_id])
 		end
 		def set_item
 			@item = @task_list.items.find(params[:id])

@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@team = Team.new
-		@title = "My Teams"
+		@title = "Teams"
 		@user  = User.find(params[:id])
 		@teams = @user.teams
-		@task_list = TaskList.new
-		@task_lists = TaskList.all
+		@task_list = @user.task_lists.build
+		@task_lists = @user.task_lists.load.reject(&:new_record?)
 	end
 
 	def teams

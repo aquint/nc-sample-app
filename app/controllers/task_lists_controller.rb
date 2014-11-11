@@ -2,11 +2,11 @@ class TaskListsController < ApplicationController
   before_action :set_task_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @task_lists = TaskList.all
+    @task_lists = current_user.task_lists.all
   end
 
   def show
-    @task_list = TaskList.find(params[:id])
+    @task_list = current_user.task_lists.find(params[:id])
     @items = @task_list.items
   end
 
@@ -14,7 +14,7 @@ class TaskListsController < ApplicationController
   end
 
   def create
-    @task_list = TaskList.new(task_list_params)
+    @task_list = current_user.task_lists.build(task_list_params)
 
       if @task_list.save
         flash[:sucess] = "New Task List created!"
@@ -50,7 +50,7 @@ class TaskListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task_list
-      @task_list = TaskList.find(params[:id])
+      @task_list = current_user.task_lists.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
