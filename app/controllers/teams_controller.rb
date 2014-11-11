@@ -5,7 +5,6 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @title = "Members"
     @users = @team.users
-    @tasks = @team.task_lists
   end
   def create
     @team = Team.new(team_params)
@@ -14,11 +13,12 @@ class TeamsController < ApplicationController
       flash[:success] = "Team Created!"
       redirect_to @team
     else
-      render 'new'
+      flash[:error] = "Team already exists"
+      redirect_to interface_show_path
     end
   end
   def index
-    @teams = Team.paginate(:per_page => 5, :page => params[:page])
+    @teams = Team.all
   end
   private
 

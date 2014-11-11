@@ -40,12 +40,12 @@ class User < ActiveRecord::Base
   def join_team(team)
   	memberships.create(team_id: team.id)
   end
-  def leave_team(user)
-  	memberships.find_by(user_id: user.id).destroy
+  def leave_team(team)
+  	memberships.find_by(team_id: team.id).destroy
   end
 
-  def in_team?(user)
-	  teams.include?(user)
+  def in_team?(team)
+	  teams.include?(team)
 	end
 
   def self.search(query)
