@@ -41,9 +41,9 @@
 		<div class="col-md-4">
 		<h1>All Tasks</h1>
 			<ul class="posts">
-			  <% @users.reverse_each do |user| %>
+			  <% @task_lists.reverse_each do |task_lists| %>
 			    <li>
-			      <%= link_to user.name, user %>
+			      <%= link_to task_lists.title, task_lists %>
 			    </li>
 			  <% end %>
 			</ul>
