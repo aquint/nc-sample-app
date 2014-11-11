@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 		@title = "My Teams"
 		@user  = User.find(params[:id])
 		@teams = @user.teams
+		@task_list = TaskList.new
+		@task_lists = TaskList.all
 	end
 
 	def teams

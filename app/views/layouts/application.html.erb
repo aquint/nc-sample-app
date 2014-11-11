@@ -9,6 +9,7 @@
 <body>
 	<%= render 'layouts/header' %>
 	<%= yield %>
-
+	<hr>
+	<%= javascript_include_tag "scripts", "data-turbolinks-track" => true %>
 </body>
 </html>

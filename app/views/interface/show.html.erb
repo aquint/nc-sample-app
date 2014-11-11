@@ -1,0 +1,55 @@
+<div class="container interface">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Manage</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Create a Team</h3>
+			<%= render 'teams/new_team' %>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-4">
+		<h1>All Users</h1>
+			<ul class="posts">
+			  <% @users.reverse_each do |user| %>
+			    <li>
+			      <%= link_to user.name, user %>
+			    </li>
+			  <% end %>
+			</ul>
+		</div>
+		<div class="col-md-4">
+		<h1>All Teams</h1>
+
+			<ul class="teams">
+			  <% @teams.reverse_each do |team| %>
+			    <li>
+			      <%= link_to team.name, team %>
+			      <%= form_tag ('/interface/show/join') do %>
+				  <div><%= hidden_field_tag :team_id, team.id %></div>
+				  <%= submit_tag "Add Users", class: "btn btn-primary" %>
+				  <% end %>
+			    </li>
+			  <% end %>
+			</ul>
+
+		</div>
+		<div class="col-md-4">
+		<h1>All Tasks</h1>
+			<ul class="posts">
+			  <% @users.reverse_each do |user| %>
+			    <li>
+			      <%= link_to user.name, user %>
+			    </li>
+			  <% end %>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		
+	</div>
+</div>

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 8 }
 	has_many :memberships
 	has_many :teams, through: :memberships
+  has_many :tasks
+  has_many :items, through: :tasks
 
 	def User.new_token
       SecureRandom.urlsafe_base64
@@ -45,4 +47,13 @@ class User < ActiveRecord::Base
   def in_team?(user)
 	  teams.include?(user)
 	end
+
+  def self.search(query)
+      if query
+        query = "%" + query.downcase + "%"
+          where('LOWER(email) LIKE ?', query)
+      else
+          scoped
+      end
+  end
 end

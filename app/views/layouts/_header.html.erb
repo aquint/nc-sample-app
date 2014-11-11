@@ -9,6 +9,9 @@
     <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li>
+            <%= link_to "Manage", interface_show_path %>
+          </li>
+          <li>
             <%= link_to "View all teams", teams_path %>
           </li>
           <li>

@@ -1,18 +1,27 @@
 <div class="container team-profile">
 	<div class="row show-post">
 		<div class="col-md-12">
-			<%= render 'users/join_form', team: @team %>
 			<h1><%= @team.name %></h1>
 		</div>
 	</div>
 	<hr>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-6">
 		    <h3><%= @title %></h3>
 		    <% if @users.any? %>
 		      <ul class="users">
 		        <% @users.each do |user| %>
 		        <li><%= link_to user.name, user %></li>
+		        <% end %>
+		      </ul>
+		    <% end %>
+		</div>
+		<div class="col-md-6">
+		    <h3>Tasks</h3>
+		    <% if @tasks.any? %>
+		      <ul class="tasks">
+		        <% @tasks.each do |list| %>
+		        <li><%= link_to list.title, list %></li>
 		        <% end %>
 		      </ul>
 		    <% end %>

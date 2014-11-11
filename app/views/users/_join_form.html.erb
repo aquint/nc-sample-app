@@ -1,9 +1,7 @@
-<% unless current_user?(@user) %>
-  <div id="follow_form">
-  <% if current_user.in_team?(current_user) %>
+<div id="follow_form">
+  <% if user.in_team?(user) %>
     <%= render 'users/leave' %>
   <% else %>
-    <%= render 'users/join', team: team %>
+    <%= render 'users/join', team: team, user: user %>
   <% end %>
-  </div>
-<% end %>
+</div>

@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @title = "Members"
     @users = @team.users
+    @tasks = @team.task_lists
   end
   def create
     @team = Team.new(team_params)

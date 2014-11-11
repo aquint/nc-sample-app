@@ -6,13 +6,6 @@
 	</div>
 	<hr>
 	<div class="row">
-		<div class="col-md-12">
-			<h3>Create a Team</h3>
-			<%= render 'teams/new_team' %>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
 		<div class="col-md-6">
 		    <h3><%= @title %></h3>
 		    <% if @teams.any? %>
@@ -25,14 +18,22 @@
 		</div>
 		<div class="col-md-6">
 		    <h3><%= 'My Tasks' %></h3>
-		    <% if true %>
+		    <% if @task_lists.any? %>
 		      <ul class="users">
-		        <li><a href="#">Task 1</a></li>
-		        <li><a href="#">Task 2</a></li>
-		        <li><a href="#">Task 3</a></li>
-		        <li><a href="#">Task 4</a></li>
+		        <% @task_lists.each do |task_list| %>
+		        <li>
+		        	<%= link_to task_list.title, task_list %>
+		        	<p><%= task_list.description %></p>
+		        </li>
+		        <% end %>
 		      </ul>
 		    <% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<h1>Create a task list</h1>
+			<%= render 'task_lists/form' %>
 		</div>
 	</div>
 </div>
